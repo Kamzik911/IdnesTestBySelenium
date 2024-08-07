@@ -1,6 +1,4 @@
-﻿using IdnesTestBySelenium.MethodsForTests;
-
-namespace IdnesTestBySelenium.Tests
+﻿namespace IdnesTestBySelenium.Tests
 {
     [TestClass]
     public class DennyAllCookies
@@ -25,8 +23,13 @@ namespace IdnesTestBySelenium.Tests
         public void AllowAllCookies_ShouldPass()
         {
             methods.GetIdnesMainPage();
-            methods.ClickOnElementById("didomi-notice-agree-button");
+            methods.ClickOnElementById("didomi-notice-agree-button");            
+        }
+        
+        [TestCleanup]
+        public void TestCleanup() 
+        {
             methods.TestCleanup();
-        }        
+        }
     }
 }

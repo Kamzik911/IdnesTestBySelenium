@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IdnesTestBySelenium.Tests
+﻿namespace IdnesTestBySelenium.Tests
 {
-    internal class CheckButtonNames
+    [TestClass]
+    public class CheckButtonNames
     {
+        Methods methods = new Methods();        
+
+        [TestMethod]
+        public void VerifyButtonName_ShouldPass()
+        {
+            methods.GetIdnesMainPage();
+            methods.ClickOnElementById("didomi-notice-learn-more-button");
+            methods.ClickOnElementByCss("button[class='didomi-components-button didomi-button didomi-button-standard standard-button']");
+            methods.VerifyButtonNameByLinkText("Přihlásit");
+        }
+
+        [TestCleanup]
+        public void ButtonNamesAfterTestCleanup()
+        {
+            methods.TestCleanup();
+        }
     }
 }
