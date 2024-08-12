@@ -1,12 +1,9 @@
-﻿using System.Diagnostics;
-
-namespace IdnesTestBySelenium.Setup
+﻿namespace IdnesTestBySelenium.Setup
 {
     public class SelectWebDriver
     {
-        private IWebDriver ?webDriver;
+        private IWebDriver? webDriver;
 
-        
         public SelectWebDriver(string selectWebDriver)
         {
             if (selectWebDriver == "Chrome")
@@ -21,8 +18,14 @@ namespace IdnesTestBySelenium.Setup
             {
                 webDriver = new EdgeDriver();
             }
-        }        
-        
+        }
+
+        public void RemoveChromeExtensions()
+        {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArguments("--disable-extensions");
+        }
+
         public IWebDriver GetDriver()
         {
             if (webDriver == null)

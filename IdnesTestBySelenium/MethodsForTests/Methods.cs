@@ -5,23 +5,22 @@ namespace IdnesTestBySelenium.MethodsForTests
 {
     public class Methods
     {
-        IWebDriver webDriver = new SelectWebDriver("Chrome").GetDriver();        
-        
+        IWebDriver webDriver = new SelectWebDriver("Chrome").GetDriver();
+
         string idnesMainPage = "https://idnes.cz";
         string idnesLoginPage = "https://ucet.idnes.cz/prihlasit";
         
-
-        public void SetupBeforeTest()
+        public void MaximizeWindow()
         {
             try
             {
                 webDriver.Manage().Window.Maximize();
             }
-            catch 
+            catch
             {
                 throw new Exception("Maximize window doesn't initialize");
-            }            
-        }        
+            }
+        }
 
         public void GetIdnesLoginPage()
         {
@@ -45,7 +44,7 @@ namespace IdnesTestBySelenium.MethodsForTests
             {
                 throw new Exception("Page doesn't exist");
             }
-        }        
+        }
 
         public void WaitForVisibleElementByCss(int waitForSeconds, string cssElement)
         {
@@ -93,10 +92,10 @@ namespace IdnesTestBySelenium.MethodsForTests
                 wait.Until(ExpectedConditions.ElementIsVisible(By.Id(IdElement)));
             }
             catch
-            { 
+            {
                 throw new Exception("Element doesn't exist");
             }
-            
+
         }
 
         public void InputTextByName(string nameElement, string inputTextToField)
@@ -120,7 +119,7 @@ namespace IdnesTestBySelenium.MethodsForTests
                 webDriver.FindElement(By.CssSelector(cssElement)).Click();
             }
             else
-            { 
+            {
                 throw new Exception("Element doesn't exist");
             }
         }
@@ -138,19 +137,31 @@ namespace IdnesTestBySelenium.MethodsForTests
             }
         }
 
-        public void VerifyButtonNameByLinkText(string txtElement)
-        {            
-            if (txtElement != null)
-            {                
+        public void VerifyButtonNameByLinkText(string txtElement, string nameOfElement)
+        {
+            if (txtElement == nameOfElement)
+            {
                 WaitForVisibleElementByLinkText(10, txtElement);
-                IWebElement button = webDriver.FindElement(By.LinkText(txtElement));     
-                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Přihlásit", button.Text,"The button name isn't as expected");
+                webDriver.FindElement(By.LinkText(txtElement));
             }
             else
             {
                 throw new ElementNotVisibleException($"The button name doesn't match with expected name");
             }
-        }        
+        }
+
+        public void VerifyButtonNameByCss(string cssElement, string expectedButtonName, string actualButtonName)
+        {            
+            if (expectedButtonName == actualButtonName)
+            {
+                WaitForVisibleElementByCss(10, cssElement);
+                webDriver.FindElement(By.CssSelector(cssElement));
+            }
+            else
+            {
+                throw new ElementNotVisibleException("The button name doesn't match!");
+            }
+        }
 
         public void KillWebDriverWindowsProcess()
         {

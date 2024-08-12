@@ -7,12 +7,6 @@
         string idnesUserEmail = "ttestidnes@gmail.com";
         string idnesUserPasswrod = "Idnes1dnes";
 
-        [SetUp]
-        public void SetupLoginTest()
-        {
-            methods.SetupBeforeTest();
-        }
-
         [TestMethod]
         public void UserLogin_ShouldPass()
         {            

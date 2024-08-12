@@ -4,13 +4,7 @@
     public class DennyAllCookies
     {
         Methods methods = new Methods();        
-
-        [SetUp]
-        public void SetupBeforeTests()
-        {
-            methods.SetupBeforeTest();
-        }
-
+        
         [TestMethod]
         public void DennyAllCookies_ShouldPass()
         {
