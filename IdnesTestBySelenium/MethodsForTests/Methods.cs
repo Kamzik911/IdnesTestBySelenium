@@ -25,25 +25,25 @@ namespace IdnesTestBySelenium.MethodsForTests
 
         public void GetIdnesLoginPage()
         {
-            try
+            if (idnesLoginPage != null)
             {
                 webDriver.Navigate().GoToUrl(idnesLoginPage);
             }
-            catch (Exception ex)
+            else if (string.IsNullOrEmpty(idnesLoginPage))
             {
-                throw new Exception($"Page doesn't exist: {ex.Message}");
+                throw new Exception("Page doesn't exist");
             }
         }
 
         public void GetIdnesMainPage()
         {
-            try
+            if (idnesMainPage != null)
             {
                 webDriver.Navigate().GoToUrl(idnesMainPage);
             }
-            catch (Exception ex)
+            else
             {
-                throw new Exception($"Page doesn't exist: {ex.Message}");
+                throw new Exception("Page doesn't exist");
             }
         }        
 
@@ -114,12 +114,12 @@ namespace IdnesTestBySelenium.MethodsForTests
 
         public void ClickOnElementByCss(string cssElement)
         {
-            try
+            if (cssElement != null)
             {
                 WaitForVisibleElementByCss(10, cssElement);
                 webDriver.FindElement(By.CssSelector(cssElement)).Click();
             }
-            catch 
+            else
             { 
                 throw new Exception("Element doesn't exist");
             }
@@ -127,12 +127,12 @@ namespace IdnesTestBySelenium.MethodsForTests
 
         public void ClickOnElementById(string idElement)
         {
-            try
+            if (idElement != null)
             {
                 WaitForVisibleElementById(10, idElement);
                 webDriver.FindElement(By.Id(idElement)).Click();
             }
-            catch
+            else
             {
                 throw new Exception("Element doesn't exist");
             }
@@ -140,17 +140,17 @@ namespace IdnesTestBySelenium.MethodsForTests
 
         public void VerifyButtonNameByLinkText(string txtElement)
         {            
-            try
+            if (txtElement != null)
             {                
                 WaitForVisibleElementByLinkText(10, txtElement);
                 IWebElement button = webDriver.FindElement(By.LinkText(txtElement));     
                 Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Přihlásit", button.Text,"The button name isn't as expected");
             }
-            catch
+            else
             {
                 throw new ElementNotVisibleException($"The button name doesn't match with expected name");
             }
-        }
+        }        
 
         public void KillWebDriverWindowsProcess()
         {
