@@ -7,5 +7,6 @@ global using Microsoft.VisualStudio.TestTools.UnitTesting;
 global using IdnesTestBySelenium.Setup;
 global using OpenQA.Selenium.Support.UI;
 global using SeleniumExtras.WaitHelpers;
+global using TechTalk.SpecFlow;
 
 global using IdnesTestBySelenium.MethodsForTests;

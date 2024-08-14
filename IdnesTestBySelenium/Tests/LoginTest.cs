@@ -5,7 +5,7 @@
     {        
         Methods methods = new Methods();
         string idnesUserEmail = "ttestidnes@gmail.com";
-        string idnesUserPasswrod = "Idnes1dnes";
+        string idnesUserPassword = "Idnes1dnes";
 
         [TestMethod]
         public void UserLogin_ShouldPass()
@@ -13,7 +13,7 @@
             methods.GetIdnesLoginPage();
             methods.InputTextByName("email", idnesUserEmail);
             methods.ClickOnElementById("fLogin");
-            methods.InputTextByName("pass", idnesUserPasswrod);
+            methods.InputTextByName("pass", idnesUserPassword);
             methods.ClickOnElementById("fLoginPass");
             methods.WaitForVisibleElementById(10, "fLogout");
         }

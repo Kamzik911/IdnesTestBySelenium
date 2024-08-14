@@ -1,7 +1,4 @@
-﻿
-
-
-namespace IdnesTestBySelenium.MethodsForTests
+﻿namespace IdnesTestBySelenium.MethodsForTests
 {
     public class Methods
     {
