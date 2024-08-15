@@ -13,9 +13,9 @@
             {
                 webDriver.Manage().Window.Maximize();
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Maximize window doesn't initialize");
+                throw new Exception($"Maximize window doesn't initialize{ex.Message}");
             }
         }
 
@@ -25,7 +25,7 @@
             {
                 webDriver.Navigate().GoToUrl(idnesLoginPage);
             }
-            else if (string.IsNullOrEmpty(idnesLoginPage))
+            else string.IsNullOrEmpty(idnesLoginPage);
             {
                 throw new Exception("Page doesn't exist");
             }
@@ -39,7 +39,7 @@
             }
             else
             {
-                throw new Exception("Page doesn't exist");
+                throw new Exception($"Page doesn't exist");
             }
         }
 
@@ -65,7 +65,7 @@
             }
             catch
             {
-                throw new Exception($"Element doesn't exist");
+                throw new Exception("Element doesn't exist");
             }
         }
         public void WaitForVisibleElementByName(int waitForSeconds, string nameElement)
@@ -92,7 +92,19 @@
             {
                 throw new Exception("Element doesn't exist");
             }
+        }
 
+        public void WaitForVisibleElementByXPath(int waitForSeconds, string xPathElement)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(waitForSeconds));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(xPathElement)));
+            }
+            catch
+            {
+                throw new Exception("Element doesn't exist");
+            }
         }
 
         public void InputTextByName(string nameElement, string inputTextToField)
@@ -134,6 +146,71 @@
             }
         }
 
+        public void ClickOnElementByLinkText(string linkTextElement)
+        {
+            if (linkTextElement != null)
+            {
+                WaitForVisibleElementByLinkText(10, linkTextElement);
+                webDriver.FindElement(By.LinkText(linkTextElement)).Click();
+            }
+            else
+            {
+                throw new Exception("Element doesn't exist");
+            }
+        }
+
+        public void VerifyWebPageTextByCss(string cssElement)
+        {
+            if (cssElement != null)
+            {
+                WaitForVisibleElementByCss(10, cssElement);
+                webDriver.FindElement(By.CssSelector(cssElement));
+            }
+            else
+            {
+                throw new ElementNotVisibleException("Text not Found");
+            }
+        }
+
+        public void VerifyWebPageTextByLinkText (string linkTextName)
+        {
+            if (linkTextName != null)
+            {
+                WaitForVisibleElementByLinkText(10, linkTextName);
+                webDriver.FindElement(By.LinkText(linkTextName));
+            }
+            else
+            {
+                throw new ElementNotVisibleException("Text not Found");
+            }
+        }
+
+        public void VerifyWebPageTextByName(string nameName)
+        {
+            if (nameName != null)
+            {
+                WaitForVisibleElementByName(10, nameName);
+                webDriver.FindElement(By.Name(nameName));
+            }
+            else
+            {
+                throw new ElementNotVisibleException("Text not Found");
+            }
+        }
+
+        public void VerifyVisibilityWebPageTextByXPath(string cssElement, string xPathSearchText)
+        {
+            if (xPathSearchText != null)
+            {
+                WaitForVisibleElementByCss(10, cssElement);
+                webDriver.FindElement(By.XPath($"//*[text()='{xPathSearchText}']"));
+            }
+            else
+            {
+                throw new ElementNotVisibleException("Text not Found");
+            }
+        }
+
         public void VerifyButtonNameByLinkText(string txtElement, string nameOfElement)
         {
             if (txtElement == nameOfElement)
@@ -143,7 +220,7 @@
             }
             else
             {
-                throw new ElementNotVisibleException($"The button name doesn't match with expected name");
+                throw new ElementNotVisibleException("The button name doesn't match with expected name");
             }
         }
 
