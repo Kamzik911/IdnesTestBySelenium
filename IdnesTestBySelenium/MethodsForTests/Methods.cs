@@ -1,12 +1,12 @@
 ﻿namespace IdnesTestBySelenium.MethodsForTests
 {
     public class Methods
-    {
-        IWebDriver webDriver = new SelectWebDriver("Chrome").GetDriver();
+    {           
+        IWebDriver webDriver = new SelectWebDriver("Chrome").GetDriver();        
 
         string idnesMainPage = "https://idnes.cz";
         string idnesLoginPage = "https://ucet.idnes.cz/prihlasit";
-        
+
         public void MaximizeWindow()
         {
             try
@@ -229,7 +229,6 @@
             if (expectedButtonName == actualButtonName)
             {
                 WaitForVisibleElementByCss(10, cssElement);
-                webDriver.FindElement(By.CssSelector(cssElement));
             }
             else
             {

@@ -3,12 +3,15 @@
     public class SelectWebDriver
     {
         private IWebDriver? webDriver;
+        ChromeOptions chromeOptions = new ChromeOptions();
+        
 
         public SelectWebDriver(string selectWebDriver)
         {
             if (selectWebDriver == "Chrome")
             {
-                webDriver = new ChromeDriver();
+                chromeOptions.AddArgument("--disable-search-engine-choice-screen");
+                webDriver = new ChromeDriver(chromeOptions);                
             }
             else if (selectWebDriver == "Firefox")
             {
@@ -18,13 +21,7 @@
             {
                 webDriver = new EdgeDriver();
             }
-        }
-
-        public void RemoveChromeExtensions()
-        {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.AddArguments("--disable-extensions");
-        }
+        }        
 
         public IWebDriver GetDriver()
         {

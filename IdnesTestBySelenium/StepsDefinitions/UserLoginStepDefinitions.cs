@@ -4,9 +4,7 @@ namespace IdnesTestBySelenium.StepsDefinitions
     public class UserLoginStepDefinitions
     {
         Methods methods = new Methods();
-
-        string idnesUserEmail = "ttestidnes@gmail.com";
-        string idnesUserPassword = "Idnes1dnes";
+        DefinedLoginsData loginsData = new DefinedLoginsData();
 
         [Given(@"User go to login page")]
         public void GivenUserGoToLoginPage()
@@ -17,7 +15,7 @@ namespace IdnesTestBySelenium.StepsDefinitions
         [Given(@"User set right e-mail")]
         public void GivenUserSetRightE_Mail()
         {
-            methods.InputTextByName("email", idnesUserEmail);            
+            methods.InputTextByName("email", loginsData.idnesUserEmail);            
         }
 
         [Given(@"User click on Continue button")]
@@ -29,7 +27,7 @@ namespace IdnesTestBySelenium.StepsDefinitions
         [Given(@"User set right password")]
         public void GivenUserSetRightPassword()
         {
-            methods.InputTextByName("pass", idnesUserPassword);            
+            methods.InputTextByName("pass", loginsData.idnesUserPassword);
         }
 
         [When(@"User click on Login button")]

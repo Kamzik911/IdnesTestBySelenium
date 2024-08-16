@@ -3,45 +3,57 @@
     [TestClass]
     public class CheckMainPageButtonNames
     {
-        private Methods methods = new Methods();        
+        private Methods methods = new Methods();     
+        private DefinedElements definedElements = new DefinedElements();        
 
         [TestInitialize]
         public void SetupBeforeTest()
-        {
-            methods.GetIdnesMainPage();
-            methods.MaximizeWindow();
+        {               
+            methods.MaximizeWindow();            
+            methods.GetIdnesMainPage();            
+            methods.ClickOnElementByCss(definedElements.allCookiesAllowButton);
         }
 
         [TestMethod]
         public void MainPageUserLogin_ShouldPass()
-        {            
-            methods.ClickOnElementById("didomi-notice-learn-more-button");
-            methods.ClickOnElementByCss("button[class='didomi-components-button didomi-button didomi-button-standard standard-button']");
+        {                      
             methods.VerifyButtonNameByLinkText("Přihlásit", "Přihlásit");
         }
 
         [TestMethod]
         public void MainPageMenu_ShouldPass()
-        {            
-            methods.ClickOnElementById("didomi-notice-learn-more-button");
-            methods.ClickOnElementByCss("button[class='didomi-components-button didomi-button didomi-button-standard standard-button']");
-            methods.VerifyButtonNameByCss(".ico-menu", "Menu", "Menu");            
+        {               
+            methods.VerifyButtonNameByLinkText("Menu", "Menu");            
         }
 
         [TestMethod]
         public void MainPageIphRow3Zpravy_ShouldPass()
-        {            
-            methods.ClickOnElementById("didomi-notice-learn-more-button");
-            methods.ClickOnElementByCss("button[class='didomi-components-button didomi-button didomi-button-standard standard-button']");
-            methods.VerifyButtonNameByCss(".ico-menu", "Zprávy", "Zprávy");
-        }
+        {               
+            methods.VerifyButtonNameByLinkText("Zprávy", "Zprávy");
+        }        
 
         [TestMethod]
         public void MainPageIphRow3Kraje_ShouldPass()
         {         
-            methods.ClickOnElementById("didomi-notice-learn-more-button");
-            methods.ClickOnElementByCss("button[class='didomi-components-button didomi-button didomi-button-standard standard-button']");
-            methods.VerifyButtonNameByCss(".ico-menu", "Kraje", "Kraje");
+            methods.VerifyButtonNameByLinkText("Kraje", "Kraje");
+        }
+
+        [TestMethod]
+        public void MainPageIphRow3Sport_ShouldPass()
+        {
+            methods.VerifyButtonNameByLinkText("Sport", "Sport");
+        }
+
+        [TestMethod]
+        public void MainPageIphRow3Magazines_ShouldPass()
+        {
+            methods.VerifyButtonNameByLinkText("Magazíny", "Magazíny");
+        }
+
+        [TestMethod]
+        public void MainPageIphRow3Revues_ShouldPass()
+        {
+            methods.VerifyButtonNameByLinkText("Revue", "Revue");
         }
 
         [TestCleanup]

@@ -5,7 +5,7 @@
     {        
         Methods methods = new Methods();
         DefinedLoginsData loginsData = new DefinedLoginsData();
-        DefinedTestButtons definedTestButtons = new DefinedTestButtons();
+        DefinedElements definedElements = new DefinedElements();
 
         [TestInitialize]
         public void SetupLoginTests()
@@ -17,11 +17,11 @@
         [TestMethod]
         public void UserLogin_ShouldPass()
         {               
-            methods.InputTextByName(definedTestButtons.loginEmailField, loginsData.idnesUserEmail);
-            methods.ClickOnElementById(definedTestButtons.loginContinueToPassword);
-            methods.InputTextByName(definedTestButtons.loginPasswordField, loginsData.idnesUserPassword);
-            methods.ClickOnElementById(definedTestButtons.loginContinueToLogin);
-            methods.WaitForVisibleElementById(10, definedTestButtons.logoutButton);
+            methods.InputTextByName(definedElements.loginEmailField, loginsData.idnesUserEmail);
+            methods.ClickOnElementById(definedElements.loginContinueToPassword);
+            methods.InputTextByName(definedElements.loginPasswordField, loginsData.idnesUserPassword);
+            methods.ClickOnElementById(definedElements.loginContinueToLogin);
+            methods.WaitForVisibleElementById(10, definedElements.logoutButton);
         }
 
         [TestCleanup]
