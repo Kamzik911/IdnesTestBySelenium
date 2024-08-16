@@ -25,7 +25,7 @@
             {
                 webDriver.Navigate().GoToUrl(idnesLoginPage);
             }
-            else string.IsNullOrEmpty(idnesLoginPage);
+            else
             {
                 throw new Exception("Page doesn't exist");
             }
