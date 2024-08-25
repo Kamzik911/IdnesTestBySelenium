@@ -172,7 +172,7 @@
             }
         }
 
-        public void VerifyWebPageTextByLinkText (string linkTextName)
+        public void VerifyWebPageTextByLinkText(string linkTextName)
         {
             if (linkTextName != null)
             {

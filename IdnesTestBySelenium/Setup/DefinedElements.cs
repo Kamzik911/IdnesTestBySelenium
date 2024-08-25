@@ -15,8 +15,11 @@
         public string loginPasswordField = "pass";
         public string loginContinueToLogin = "fLoginPass";
         public string logoutButton= "fLogout";
+        public string inputWrongEmail = "Registrujte se a využívejte všech možností webu iDNES naplno";
+        public string inputWrongEmailAssertText = "p[id='benefit-preview']";
+        public string loginRegistryButtonNameById = "fCreate";
 
         //CheckMainPageButtonNames elements
-        
+
     }
 }
