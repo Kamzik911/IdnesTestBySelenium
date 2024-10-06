@@ -1,8 +1,9 @@
 ﻿namespace IdnesTestBySelenium.MethodsForTests
 {
     public class Methods
-    {           
-        IWebDriver webDriver = new SelectWebDriver("Chrome").GetDriver();        
+    {
+        IWebDriver webDriver = new SelectWebDriver("Edge").GetDriver();
+        
 
         string idnesMainPage = "https://idnes.cz";
         string idnesLoginPage = "https://ucet.idnes.cz/prihlasit";
@@ -213,12 +214,12 @@
 
         public void VerifyButtonNameByLinkText(string txtElement, string nameOfElement)
         {
-            if (txtElement == nameOfElement)
+            try
             {
                 WaitForVisibleElementByLinkText(10, txtElement);
                 webDriver.FindElement(By.LinkText(txtElement));
             }
-            else
+            catch (ElementNotVisibleException)
             {
                 throw new ElementNotVisibleException("The button name doesn't match with expected name");
             }

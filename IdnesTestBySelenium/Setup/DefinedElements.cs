@@ -2,7 +2,7 @@
 {    
     class DefinedElements
     {
-        //Denny/AllowAllCookies elements
+        //CookiesTests elements
         public string cookiesAdvancedSettings = "Podrobné nastavení";
         public string allCookiesDennyButton = "button[class='didomi-components-button didomi-button didomi-button-standard standard-button']";
         public string allCookiesDennyText = "#noconsent";
@@ -21,5 +21,9 @@
 
         //CheckMainPageButtonNames elements
 
+
+        //NewTabText
+        public string NewsTabElement = "div[class='arts-1 nejnej-list-lost nejnej-more-lost']";
+        public string firstMessage = "a[score-place='1'][score-id='A241006_110838_plzen-zpravy_mav']";
     }
 }
